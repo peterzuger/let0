@@ -1,0 +1,11 @@
+*~
+*.o
+*.elf
+*.ld
+*.map
+*.lib
+*.a
+*.la
+*.lo
+*.hex
+*.bin
