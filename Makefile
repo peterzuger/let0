@@ -17,6 +17,10 @@ STACK_SIZE   ?= 0x4000
 GETATTR      = tools/getattr.py
 DEVICES_FILE = devices.json
 
+ifeq ($(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO)),None)
+$(error PARTNO is not in $(DEVICES_FILE))
+endif
+
 FAMILY = $(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) family)
 DEVICE = $(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) device)
 CPU = $(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) core_type)
