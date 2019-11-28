@@ -19,7 +19,40 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+#include <RCC/GPIO.hpp>
+#include <GPIO.hpp>
+#include <SysTick.hpp>
+
+#include "handlers.hpp"
 
 int main(){
-    return 0;
+    {
+        using namespace let::STK;
+        SetSysTickLoad(1000);
+        ClearSysTickCurrent();
+        EnableSysTickCounter();
+        EnableSysTickException();
+    }
+    {
+        using namespace let::RCC;
+        EnableGPIOAClock();
+        EnableGPIOCClock();
+    }
+
+    using namespace let::GPIO;
+    Pin<GPIOA, 5> led{Mode::Output};
+    Pin<GPIOC, 13> button{Mode::Input};
+
+    auto intervall = [](std::uint32_t time, auto fun){
+                         while(true){
+                             auto _j = jiffies + time;
+                             while((_j > jiffies));
+                             fun();
+                         }
+                     };
+
+    intervall(500,
+              [&led]{
+                  led.toggle();
+              });
 }
