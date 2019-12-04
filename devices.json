@@ -1,4 +1,17 @@
 {
+    "STM32L432KC":{
+        "family":"STM32L4",
+        "device":"STM32L432xx",
+        "cores":1,
+        "core_type":"cortex-m4",
+        "has_fpu":true,
+        "fpu_type":"fpv4-sp-d16",
+        "irq_count":86,
+        "flash_size":"256k",
+        "flash_origin":"0x08000000",
+        "ram_size":"64k",
+        "ram_origin":"0x20000000"
+    },
     "STM32L476RG":{
         "family":"STM32L4",
         "device":"STM32L476xx",
@@ -12,9 +25,48 @@
         "ram_size":"128k",
         "ram_origin":"0x20000000"
     },
+    "STM32L486RG":{
+        "family":"STM32L4",
+        "device":"STM32L486xx",
+        "cores":1,
+        "core_type":"cortex-m4",
+        "has_fpu":true,
+        "fpu_type":"fpv4-sp-d16",
+        "irq_count":81,
+        "flash_size":"1M",
+        "flash_origin":"0x08000000",
+        "ram_size":"128k",
+        "ram_origin":"0x20000000"
+    },
+    "STM32F401RE":{
+        "family":"STM32F4",
+        "device":"STM32F401xE",
+        "cores":1,
+        "core_type":"cortex-m4",
+        "has_fpu":true,
+        "fpu_type":"fpv4-sp-d16",
+        "irq_count":84,
+        "flash_size":"512k",
+        "flash_origin":"0x08000000",
+        "ram_size":"96k",
+        "ram_origin":"0x20000000"
+    },
     "STM32F412RG":{
         "family":"STM32F4",
         "device":"STM32F412Rx",
+        "cores":1,
+        "core_type":"cortex-m4",
+        "has_fpu":true,
+        "fpu_type":"fpv4-sp-d16",
+        "irq_count":96,
+        "flash_size":"1M",
+        "flash_origin":"0x08000000",
+        "ram_size":"256k",
+        "ram_origin":"0x20000000"
+    },
+    "STM32F412ZG":{
+        "family":"STM32F4",
+        "device":"STM32F412Zx",
         "cores":1,
         "core_type":"cortex-m4",
         "has_fpu":true,
