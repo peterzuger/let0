@@ -50,17 +50,14 @@ int main(){
     AlternateFunction<GPIOA, 3>(7); // RX
     let::USART::USART<let::USART::USART2> debug{230400};
 
-    auto intervall = [](std::uint32_t time, auto fun){
-                         while(true){
-                             auto _j = jiffies + time;
-                             while((_j > jiffies));
-                             fun();
-                         }
-                     };
+    auto delay = [](std::size_t time){
+                     auto _j = jiffies + time;
+                     while((_j > jiffies));
+                 };
 
-    intervall(500,
-              [&led, &debug]{
-                  led.toggle();
-                  debug.write("Hello World\n\r");
-              });
+    while(true){
+        led.toggle();
+        debug << "Hello World\n\r";
+        delay(500);
+    }
 }
