@@ -88,6 +88,7 @@ FPUFLAGS  = $(FPU)
 OPTFLAGS  = -O2 -ffunction-sections -fdata-sections $(DBGFLAGS)
 IFLAGS    = -I$(HALDIR)/include -I$(LIBCDIR)/include -I$(LIBCXXDIR)/include
 IFLAGS   += -Iinclude
+LIBS      = -L$(LIBCDIR) -L$(LIBCXXDIR) -lc -lcpp
 WFLAGS    = -Wall -Wextra -Wpedantic -Wduplicated-cond -Wduplicated-branches
 WFLAGS   += -Wlogical-op -Wnull-dereference -Wshadow -Wswitch-default
 WFLAGS   += -Wdouble-promotion -Winit-self -Wswitch-enum
