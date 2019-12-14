@@ -25,7 +25,7 @@ FAMILY = $(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) family)
 DEVICE = $(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) device)
 CPU = $(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) core_type)
 ifeq ($(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) has_fpu),1)
-FPU = $(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) fpu_type)
+FPU = -mfloat-abi=hard -mfpu=$(shell $(GETATTR) $(DEVICES_FILE) $(PARTNO) fpu_type)
 else
 FPU = -mfloat-abi=soft
 endif
