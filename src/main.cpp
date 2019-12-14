@@ -20,8 +20,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 #include <RCC/GPIO.hpp>
+#include <RCC/USART.hpp>
 #include <GPIO.hpp>
 #include <SysTick.hpp>
+#include <USART.hpp>
 
 #include "handlers.hpp"
 
@@ -37,11 +39,16 @@ int main(){
         using namespace let::RCC;
         EnableGPIOAClock();
         EnableGPIOCClock();
+        EnableUSART2Clock();
     }
 
     using namespace let::GPIO;
     Pin<GPIOA, 5> led{Mode::Output};
     Pin<GPIOC, 13> button{Mode::Input};
+
+    AlternateFunction<GPIOA, 2>(7); // TX
+    AlternateFunction<GPIOA, 3>(7); // RX
+    let::USART::USART<let::USART::USART2> debug{230400};
 
     auto intervall = [](std::uint32_t time, auto fun){
                          while(true){
@@ -52,7 +59,8 @@ int main(){
                      };
 
     intervall(500,
-              [&led]{
+              [&led, &debug]{
                   led.toggle();
+                  debug.write("Hello World\n\r");
               });
 }
